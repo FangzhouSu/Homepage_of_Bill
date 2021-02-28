@@ -1,0 +1,268 @@
+/* 负责个人主页的全局 */
+
+
+/* 通配符选择器 */
+
+* {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+
+/* 设置背景以及整体的样式要求 */
+
+body {
+    background-size: 100% auto;
+    color: #fff;
+    overflow: hidden;
+    background-image: linear-gradient(to right, #74ebd5 0%, #9face6 100%);
+}
+
+
+/* top盒子 */
+
+.top {
+    width: 400px;
+    height: 330px;
+    margin: 160px 160px auto;
+}
+
+
+/* 1.导航栏 */
+
+.nav {
+    float: left;
+    position: absolute;
+    top: 5px;
+    left: 160px;
+}
+
+.nav ul li {
+    float: left;
+    /* 回头一定要好好规划下代码呜呜呜
+    忒乱了 */
+    border-radius: 50%;
+    background-color: #cecece60;
+}
+
+.nav ul li a {
+    display: block;
+    font-size: 20px;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 25px;
+    color: #fff;
+}
+
+
+/* 2.个人介绍框框 */
+
+.kuangkuang {
+    width: 380px;
+    height: 330px;
+    text-align: center;
+    /* 为了布局时候好看一些 设置一个边框 后期删掉 */
+    border: 1px solid #fff;
+    /* 60%的透明度 */
+    background: #00000060;
+}
+
+
+/* 头像 */
+
+.kuangkuang img {
+    border-radius: 50%;
+}
+
+.kuangkuang h3 {
+    font-size: 20px;
+    padding: 10px 0;
+}
+
+.kuangkuang p {
+    padding: 10px 0;
+}
+
+
+/* 第一句介绍语 */
+
+.kuangkuang .first {
+    font-size: 18px;
+}
+
+
+/* 第二句介绍语 */
+
+.kuangkuang .second {
+    font-size: 14px;
+}
+
+
+/* 底部图标 */
+
+.kuangkuang ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* csdn(长得像就行了实在找不到其他的www) qq 微信 github直达车 图标 */
+
+.kuangkuang ul li a {
+    font-size: 25px;
+    height: 30px;
+    width: 30px;
+    color: #fff;
+}
+
+
+/* 鼠标经过图标的效果 */
+
+.kuangkuang .photo ul li a:hover {
+    /*开始想尝试用C3特性完成这块儿的缩放效果
+    发现这个图标算是文字类的
+    需要改变字体大小font-szie才能该表图标大小*/
+    /*transform: scale(2);*/
+    font-size: 35px;
+}
+
+
+/* 3.熊熊 */
+
+
+/* 熊熊要住在冰雪世界！背景图制作 */
+
+.bg {
+    width: 700px;
+}
+
+.bg .bg1 {
+    position: absolute;
+    height: 300px;
+    width: 3840px;
+    left: 0;
+    bottom: 0;
+    /* 权重给2 因为需要bg1（白色山）压住bg2（黑色山） */
+    z-index: 2;
+    background: url(../img/bg1.png) repeat-x;
+    /* 来绑定山移动的动画~ */
+    animation: bg1 66s linear infinite;
+}
+
+.bg .bg2 {
+    position: absolute;
+    height: 300px;
+    width: 3840px;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background: url(../img/bg2.png) repeat-x;
+    animation: bg2 66s linear infinite;
+}
+
+
+/* 背景图片移动的模块 */
+
+@keyframes bg {
+    0% {
+        /* 图片扩大1.5倍 */
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* 让山动起来！ 要不然熊熊停到中间的时候跟原地踏步一样咯*/
+
+@keyframes bg1 {
+    0% {
+        /* 图片在背景中的位置 */
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -3840px 0;
+    }
+}
+
+@keyframes bg2 {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -3840px 0;
+    }
+}
+
+
+/* 奔跑的熊熊部分 */
+
+.bear {
+    position: absolute;
+    /* 熊熊定位到页面最下面 */
+    bottom: 0;
+    /* 清除浮动** */
+    overflow: hidden;
+    /* 切熊熊跑步时的一个动作
+    不能再多切了 再多切熊熊会多出来一个部分 */
+    width: 200px;
+    height: 160px;
+    /* 布局时更清晰 
+    background-color: pink; */
+    /* C3的特性要更加熟练地应用！ */
+    animation: move 16s linear forwards;
+}
+
+.bear img {
+    position: absolute;
+    /* 步长效果~定8个步长 */
+    animation: run .6s steps(8) infinite;
+    z-index: 3;
+}
+
+.bear .words {
+    position: relative;
+    width: 400px;
+    height: 60px;
+    /* 字最多往上调4px啦 再多调就出盒子了呜呜呜 */
+    bottom: 4px;
+    font-size: 19px;
+    color: #fff;
+    text-shadow: 0 0 3px red;
+    z-index: 5;
+    /* 这个动起来太丑了 去掉去掉 等回头找更好看的效果吧 */
+    /* animation: move 10s linear infinite; */
+}
+
+
+/* 进击的小熊！起末位置效果 */
+
+@keyframes move {
+    0% {
+        top: 660px;
+        left: 0;
+    }
+    100% {
+        top: 660px;
+        left: 750px;
+    }
+}
+
+
+/* 小熊跑步的效果 */
+
+@keyframes run {
+    0% {
+        top: 0;
+        left: 0;
+    }
+    100% {
+        top: 0;
+        left: -1600px;
+    }
+}
