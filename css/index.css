@@ -21,20 +21,16 @@ body {
 }
 
 
-/* top盒子 */
-
-.top {
-    width: 400px;
-    height: 330px;
-    margin: 160px 160px auto;
-}
-
-
 /* 1.导航栏 */
 
+.header {
+    position: relative;
+    height: 130px;
+}
+
 .nav {
-    float: left;
     position: absolute;
+    float: left;
     top: 5px;
     left: 160px;
 }
@@ -44,6 +40,7 @@ body {
     /* 回头一定要好好规划下代码呜呜呜
     忒乱了 */
     border-radius: 50%;
+    margin: 0 50px;
     background-color: #cecece60;
 }
 
@@ -62,6 +59,7 @@ body {
 .kuangkuang {
     width: 380px;
     height: 330px;
+    margin: 0 100px;
     text-align: center;
     /* 为了布局时候好看一些 设置一个边框 后期删掉 */
     border: 1px solid #fff;
